@@ -11,9 +11,16 @@
       color: #fff;
       display: flex;
       flex-direction: column;
+      min-height: 100vh;
+    }
+
+    main {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
       align-items: center;
       justify-content: center;
-      height: 100vh;
+      padding-bottom: 2rem;
     }
 
     h1 {
@@ -55,6 +62,7 @@
     }
 
     #spellOutput {
+      display: none;
       margin-top: 1.5rem;
       font-size: 1.5rem;
       font-weight: bold;
@@ -72,20 +80,46 @@
       from { opacity: 0; transform: translateY(10px); }
       to { opacity: 1; transform: translateY(0); }
     }
+
+    footer {
+      background: rgba(0, 0, 0, 0.3);
+      padding: 1rem;
+      text-align: center;
+      font-size: 0.9rem;
+      color: #ccc;
+    }
+
+    footer a {
+      color: #fff;
+      text-decoration: underline;
+    }
+
+    footer a:hover {
+      color: #00c6ff;
+    }
   </style>
 </head>
 <body>
-  <h1>Rando Spell Generator</h1>
+  <main>
+    <h1>Rando Spell Generator</h1>
 
-  <label for="language">Language:</label>
-  <select id="language">
+    <label for="language">Language:</label>
+    <select id="language">
     <option value="en">English</option>
     <option value="ru">Russian</option>
-  </select>
+    </select>
 
-  <p id="spellOutput" style="font-weight: bold; font-size: 1.2em; margin-top: 1em; height: 1em;"></p>
+    <p id="spellOutput" style="font-weight: bold; font-size: 1.2em; margin-top: 1em; height: 1em;"></p>
 
-  <button onclick="generateSpell()">Generate Rando Spell</button>
+    <button onclick="generateSpell()">Generate Rando Spell</button>
+  </main>
+
+  <footer>
+    Created by Vsevolod Shchipunov. Original game: 
+    <a href="https://skatewizards.bigcartel.com/" target="_blank" rel="noopener noreferrer">
+      Skate Wizards
+    </a>
+  </footer>
 
   <script>
     const data = {
@@ -108,21 +142,43 @@
         ]
       },
       ru: {
-        adjectives: [
-          "Крутая", "Поломанная", "Клёвая", "Эпичная", "Отпадная", "Заряженная",
-          "Стремная", "Убийственная", "Восторженная", "Бомбическая", "Скользкая", "Вызванная"
-        ],
-        verbs: [
-          "Анимирующая", "Притягивающая", "Сбивающая с толку", "Скрывающая", "Поглощающая", "Разрушающая",
-          "Дублирующая", "Расширяющаяся", "Разоблачающая", "Запечатывающая", "Защищающая", "Призывающая"
-        ],
-        elements: [
-          "Кислотная", "Воздушная", "Пыльная", "Земляная", "Огненная", "Световая",
-          "Отражающая", "Теневая", "Дымовая", "Звуковая", "Духовная", "Водяная"
-        ],
+        adjectives: {
+        m: ["Крутой", "Поломанный", "Клёвый", "Эпичный", "Отпадный", "Заряженный",
+            "Стремный", "Убийственный", "Восторженный", "Бомбический", "Скользкий", "Вызванный"],
+        f: ["Крутая", "Поломанная", "Клёвая", "Эпичная", "Отпадная", "Заряженная",
+            "Стремная", "Убийственная", "Восторженная", "Бомбическая", "Скользкая", "Вызванная"],
+        n: ["Крутое", "Поломанное", "Клёвое", "Эпичное", "Отпадное", "Заряженное",
+            "Стремное", "Убийственное", "Восторженное", "Бомбическое", "Скользкое", "Вызванное"]
+        },
+        verbs: {
+        m: ["Анимирующий", "Притягивающий", "Сбивающий с толку", "Скрывающий", "Поглощающий", "Разрушающий",
+            "Дублирующий", "Расширяющийся", "Разоблачающий", "Запечатывающий", "Защищающий", "Призывающий"],
+        f: ["Анимирующая", "Притягивающая", "Сбивающая с толку", "Скрывающая", "Поглощающая", "Разрушающая",
+            "Дублирующая", "Расширяющаяся", "Разоблачающая", "Запечатывающая", "Защищающая", "Призывающая"],
+        n: ["Анимирующее", "Притягивающее", "Сбивающее с толку", "Скрывающее", "Поглощающее", "Разрушающее",
+            "Дублирующее", "Расширяющееся", "Разоблачающее", "Запечатывающее", "Защищающее", "Призывающее"]
+        },
+        elements: {
+        m: ["Кислотный", "Воздушный", "Пыльный", "Земляной", "Огненный", "Световой",
+            "Отражающий", "Теневой", "Дымный", "Звуковой", "Духовный", "Водный"],
+        f: ["Кислотная", "Воздушная", "Пыльная", "Земляная", "Огненная", "Световая",
+            "Отражающая", "Теневая", "Дымная", "Звуковая", "Духовая", "Водяная"],
+        n: ["Кислотное", "Воздушное", "Пыльное", "Земляное", "Огненное", "Световое",
+            "Отражающее", "Теневое", "Дымное", "Звуковое", "Духовное", "Водяное"]
+        },
         objects: [
-          "Броня", "Ботинок", "Хлеб", "Ведро", "Цепь", "Дверь",
-          "Молот", "Лютня", "Матрас", "Башня", "Дерево", "Колодец"
+          { word: "Броня", gender: "f" },
+          { word: "Ботинок", gender: "m" },
+            { word: "Хлеб", gender: "m" },
+            { word: "Ведро", gender: "n" },
+            { word: "Цепь", gender: "f" },
+            { word: "Дверь", gender: "f" },
+            { word: "Молот", gender: "m" },
+            { word: "Лютня", gender: "f" },
+            { word: "Матрас", gender: "m" },
+            { word: "Башня", gender: "f" },
+            { word: "Дерево", gender: "n" },
+            { word: "Колодец", gender: "m" }
         ]
       }
     };
@@ -132,12 +188,28 @@
     }
 
     function generateSpell() {
-      const lang = document.getElementById('language').value;
-      const set = data[lang];
+  const lang = document.getElementById('language').value;
+  const output = document.getElementById('spellOutput');
 
-      const spell = `${getRandomItem(set.adjectives)} ${getRandomItem(set.verbs)} ${getRandomItem(set.elements)} ${getRandomItem(set.objects)}`;
-      document.getElementById('spellOutput').textContent = spell;
-    }
+  if (lang === 'en') {
+    const set = data.en;
+    const spell = `${getRandomItem(set.adjectives)} ${getRandomItem(set.verbs)} ${getRandomItem(set.elements)} ${getRandomItem(set.objects)}`;
+    output.textContent = spell;
+  } else {
+    const set = data.ru;
+    const obj = getRandomItem(set.objects); // { word, gender }
+    const gender = obj.gender;
+
+    const adj = getRandomItem(set.adjectives[gender]);
+    const verb = getRandomItem(set.verbs[gender]);
+    const element = getRandomItem(set.elements[gender]);
+
+    const spell = `${adj} ${verb} ${element} ${obj.word}`;
+    output.textContent = spell;
+  }
+
+  output.style.display = 'block';
+}
   </script>
 </body>
 </html>
