@@ -1,215 +1,226 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-  <meta charset="UTF-8" />
-  <title>Rando Spell Generator</title>
-  <style>
-    body {
-      margin: 0;
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-      background: linear-gradient(135deg, #1e3c72, #2a5298);
-      color: #fff;
-      display: flex;
-      flex-direction: column;
-      min-height: 100vh;
-    }
+    <meta charset="UTF-8" />
+    <title>Rando Spell Generator</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #1e3c72, #2a5298);
+            color: #fff;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
 
-    main {
-      flex: 1;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      padding-bottom: 2rem;
-    }
+        main {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding-bottom: 2rem;
+        }
 
-    h1 {
-      font-size: 2.5rem;
-      margin-bottom: 1rem;
-      text-shadow: 2px 2px #000;
-    }
+        h1 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            text-shadow: 2px 2px #000;
+        }
 
-    label {
-      font-size: 1rem;
-      margin-bottom: 0.5rem;
-    }
+        label {
+            font-size: 1rem;
+            margin-bottom: 0.5rem;
+        }
 
-    select, button {
-      font-size: 1rem;
-      padding: 0.6rem 1rem;
-      border: none;
-      border-radius: 8px;
-      margin: 0.5rem;
-      transition: background 0.3s, transform 0.2s;
-      cursor: pointer;
-    }
+        select,
+        button {
+            font-size: 1rem;
+            padding: 0.6rem 1rem;
+            border: none;
+            border-radius: 8px;
+            margin: 0.5rem;
+            transition: background 0.3s, transform 0.2s;
+            cursor: pointer;
+        }
 
-    select {
-      background: #ffffffcc;
-      color: #222;
-    }
+        select {
+            background: #ffffffcc;
+            color: #222;
+        }
 
-    button {
-      background: #00c6ff;
-      color: #fff;
-      font-weight: bold;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.3);
-    }
+        button {
+            background: #00c6ff;
+            color: #fff;
+            font-weight: bold;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+        }
 
-    button:hover {
-      background: #0072ff;
-      transform: scale(1.05);
-    }
+        button:hover {
+            background: #0072ff;
+            transform: scale(1.05);
+        }
 
-    #spellOutput {
-      display: none;
-      margin-top: 1.5rem;
-      font-size: 1.5rem;
-      font-weight: bold;
-      text-align: center;
-      padding: 1rem 2rem;
-      border-radius: 12px;
-      background: rgba(255, 255, 255, 0.1);
-      backdrop-filter: blur(4px);
-      box-shadow: 0 0 10px rgba(255, 255, 255, 0.2);
-      max-width: 90%;
-      animation: fadeIn 0.5s ease-in-out;
-    }
+        #spellOutput {
+            display: none;
+            margin-top: 1.5rem;
+            font-size: 1.5rem;
+            font-weight: bold;
+            text-align: center;
+            padding: 1rem 2rem;
+            border-radius: 12px;
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(4px);
+            box-shadow: 0 0 10px rgba(255, 255, 255, 0.2);
+            max-width: 90%;
+            animation: fadeIn 0.5s ease-in-out;
+        }
 
-    @keyframes fadeIn {
-      from { opacity: 0; transform: translateY(10px); }
-      to { opacity: 1; transform: translateY(0); }
-    }
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(10px);
+            }
 
-    footer {
-      background: rgba(0, 0, 0, 0.3);
-      padding: 1rem;
-      text-align: center;
-      font-size: 0.9rem;
-      color: #ccc;
-    }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
 
-    footer a {
-      color: #fff;
-      text-decoration: underline;
-    }
+        footer {
+            background: rgba(0, 0, 0, 0.3);
+            padding: 1rem;
+            text-align: center;
+            font-size: 0.9rem;
+            color: #ccc;
+        }
 
-    footer a:hover {
-      color: #00c6ff;
-    }
-  </style>
+        footer a {
+            color: #fff;
+            text-decoration: underline;
+        }
+
+        footer a:hover {
+            color: #00c6ff;
+        }
+    </style>
 </head>
+
 <body>
-  <main>
-    <h1>Rando Spell Generator</h1>
+    <main>
+        <h1>Rando Spell Generator</h1>
 
-    <label for="language">Language:</label>
-    <select id="language">
-    <option value="en">English</option>
-    <option value="ru">Russian</option>
-    </select>
+        <label for="language">Language:</label>
+        <select id="language">
+            <option value="en">English</option>
+            <option value="ru">Russian</option>
+        </select>
 
-    <p id="spellOutput" style="font-weight: bold; font-size: 1.2em; margin-top: 1em; height: 1em;"></p>
+        <p id="spellOutput" style="font-weight: bold; font-size: 1.2em; margin-top: 1em; height: 1em;"></p>
 
-    <button onclick="generateSpell()">Generate Rando Spell</button>
-  </main>
+        <button onclick="generateSpell()">Generate Rando Spell</button>
+    </main>
 
-  <footer>
-    Created by Vsevolod Shchipunov. Original game: 
-    <a href="https://skatewizards.bigcartel.com/" target="_blank" rel="noopener noreferrer">
-      Skate Wizards
-    </a>
-  </footer>
+    <footer>
+        Created by Vsevolod Shchipunov. Original game:
+        <a href="https://skatewizards.bigcartel.com/" target="_blank" rel="noopener noreferrer">
+            Skate Wizards
+        </a>
+    </footer>
 
-  <script>
-    const data = {
-      en: {
-        adjectives: [
-          "Awesome", "Busted", "Dope", "Epic", "Gnarly", "Hyped",
-          "Janky", "Killer", "Psyched", "Rad", "Sketchy", "Stoked"
-        ],
-        verbs: [
-          "Animating", "Attracting", "Bewildering", "Concealing", "Consuming", "Crushing",
-          "Duplicating", "Expanding", "Revealing", "Sealing", "Shielding", "Summoning"
-        ],
-        elements: [
-          "Acid", "Air", "Dust", "Earth", "Fire", "Light",
-          "Reflection", "Shadow", "Smoke", "Sound", "Spirit", "Water"
-        ],
-        objects: [
-          "Armor", "Boot", "Bread", "Bucket", "Chain", "Door",
-          "Hammer", "Lute", "Mattress", "Tower", "Tree", "Well"
-        ]
-      },
-      ru: {
-        adjectives: {
-        m: ["Крутой", "Поломанный", "Клёвый", "Эпичный", "Отпадный", "Заряженный",
-            "Стремный", "Убийственный", "Восторженный", "Бомбический", "Скользкий", "Вызванный"],
-        f: ["Крутая", "Поломанная", "Клёвая", "Эпичная", "Отпадная", "Заряженная",
-            "Стремная", "Убийственная", "Восторженная", "Бомбическая", "Скользкая", "Вызванная"],
-        n: ["Крутое", "Поломанное", "Клёвое", "Эпичное", "Отпадное", "Заряженное",
-            "Стремное", "Убийственное", "Восторженное", "Бомбическое", "Скользкое", "Вызванное"]
-        },
-        verbs: {
-        m: ["Анимирующий", "Притягивающий", "Сбивающий с толку", "Скрывающий", "Поглощающий", "Разрушающий",
-            "Дублирующий", "Расширяющийся", "Разоблачающий", "Запечатывающий", "Защищающий", "Призывающий"],
-        f: ["Анимирующая", "Притягивающая", "Сбивающая с толку", "Скрывающая", "Поглощающая", "Разрушающая",
-            "Дублирующая", "Расширяющаяся", "Разоблачающая", "Запечатывающая", "Защищающая", "Призывающая"],
-        n: ["Анимирующее", "Притягивающее", "Сбивающее с толку", "Скрывающее", "Поглощающее", "Разрушающее",
-            "Дублирующее", "Расширяющееся", "Разоблачающее", "Запечатывающее", "Защищающее", "Призывающее"]
-        },
-        elements: {
-        m: ["Кислотный", "Воздушный", "Пыльный", "Земляной", "Огненный", "Световой",
-            "Отражающий", "Теневой", "Дымный", "Звуковой", "Духовный", "Водный"],
-        f: ["Кислотная", "Воздушная", "Пыльная", "Земляная", "Огненная", "Световая",
-            "Отражающая", "Теневая", "Дымная", "Звуковая", "Духовая", "Водяная"],
-        n: ["Кислотное", "Воздушное", "Пыльное", "Земляное", "Огненное", "Световое",
-            "Отражающее", "Теневое", "Дымное", "Звуковое", "Духовное", "Водяное"]
-        },
-        objects: [
-          { word: "Броня", gender: "f" },
-          { word: "Ботинок", gender: "m" },
-            { word: "Хлеб", gender: "m" },
-            { word: "Ведро", gender: "n" },
-            { word: "Цепь", gender: "f" },
-            { word: "Дверь", gender: "f" },
-            { word: "Молот", gender: "m" },
-            { word: "Лютня", gender: "f" },
-            { word: "Матрас", gender: "m" },
-            { word: "Башня", gender: "f" },
-            { word: "Дерево", gender: "n" },
-            { word: "Колодец", gender: "m" }
-        ]
-      }
-    };
+    <script>
+        const data = {
+            en: {
+                adjectives: [
+                    "Awesome", "Busted", "Dope", "Epic", "Gnarly", "Hyped",
+                    "Janky", "Killer", "Psyched", "Rad", "Sketchy", "Stoked"
+                ],
+                verbs: [
+                    "Animating", "Attracting", "Bewildering", "Concealing", "Consuming", "Crushing",
+                    "Duplicating", "Expanding", "Revealing", "Sealing", "Shielding", "Summoning"
+                ],
+                elements: [
+                    "Acid", "Air", "Dust", "Earth", "Fire", "Light",
+                    "Reflection", "Shadow", "Smoke", "Sound", "Spirit", "Water"
+                ],
+                objects: [
+                    "Armor", "Boot", "Bread", "Bucket", "Chain", "Door",
+                    "Hammer", "Lute", "Mattress", "Tower", "Tree", "Well"
+                ]
+            },
+            ru: {
+                adjectives: {
+                    m: ["Крутой", "Поломанный", "Клёвый", "Эпичный", "Отпадный", "Заряженный",
+                        "Стремный", "Убийственный", "Восторженный", "Бомбический", "Скользкий", "Вызванный"],
+                    f: ["Крутая", "Поломанная", "Клёвая", "Эпичная", "Отпадная", "Заряженная",
+                        "Стремная", "Убийственная", "Восторженная", "Бомбическая", "Скользкая", "Вызванная"],
+                    n: ["Крутое", "Поломанное", "Клёвое", "Эпичное", "Отпадное", "Заряженное",
+                        "Стремное", "Убийственное", "Восторженное", "Бомбическое", "Скользкое", "Вызванное"]
+                },
+                verbs: {
+                    m: ["Анимирующий", "Притягивающий", "Сбивающий с толку", "Скрывающий", "Поглощающий", "Разрушающий",
+                        "Дублирующий", "Расширяющийся", "Разоблачающий", "Запечатывающий", "Защищающий", "Призывающий"],
+                    f: ["Анимирующая", "Притягивающая", "Сбивающая с толку", "Скрывающая", "Поглощающая", "Разрушающая",
+                        "Дублирующая", "Расширяющаяся", "Разоблачающая", "Запечатывающая", "Защищающая", "Призывающая"],
+                    n: ["Анимирующее", "Притягивающее", "Сбивающее с толку", "Скрывающее", "Поглощающее", "Разрушающее",
+                        "Дублирующее", "Расширяющееся", "Разоблачающее", "Запечатывающее", "Защищающее", "Призывающее"]
+                },
+                elements: {
+                    m: ["Кислотный", "Воздушный", "Пыльный", "Земляной", "Огненный", "Световой",
+                        "Отражающий", "Теневой", "Дымный", "Звуковой", "Духовный", "Водный"],
+                    f: ["Кислотная", "Воздушная", "Пыльная", "Земляная", "Огненная", "Световая",
+                        "Отражающая", "Теневая", "Дымная", "Звуковая", "Духовая", "Водяная"],
+                    n: ["Кислотное", "Воздушное", "Пыльное", "Земляное", "Огненное", "Световое",
+                        "Отражающее", "Теневое", "Дымное", "Звуковое", "Духовное", "Водяное"]
+                },
+                objects: [
+                    { word: "Броня", gender: "f" },
+                    { word: "Ботинок", gender: "m" },
+                    { word: "Хлеб", gender: "m" },
+                    { word: "Ведро", gender: "n" },
+                    { word: "Цепь", gender: "f" },
+                    { word: "Дверь", gender: "f" },
+                    { word: "Молот", gender: "m" },
+                    { word: "Лютня", gender: "f" },
+                    { word: "Матрас", gender: "m" },
+                    { word: "Башня", gender: "f" },
+                    { word: "Дерево", gender: "n" },
+                    { word: "Колодец", gender: "m" }
+                ]
+            }
+        };
 
-    function getRandomItem(arr) {
-      return arr[Math.floor(Math.random() * arr.length)];
-    }
+        function getRandomItem(arr) {
+            return arr[Math.floor(Math.random() * arr.length)];
+        }
 
-    function generateSpell() {
-  const lang = document.getElementById('language').value;
-  const output = document.getElementById('spellOutput');
+        function generateSpell() {
+            const lang = document.getElementById('language').value;
+            const output = document.getElementById('spellOutput');
 
-  if (lang === 'en') {
-    const set = data.en;
-    const spell = `${getRandomItem(set.adjectives)} ${getRandomItem(set.verbs)} ${getRandomItem(set.elements)} ${getRandomItem(set.objects)}`;
-    output.textContent = spell;
-  } else {
-    const set = data.ru;
-    const obj = getRandomItem(set.objects); // { word, gender }
-    const gender = obj.gender;
+            if (lang === 'en') {
+                const set = data.en;
+                const spell = `${getRandomItem(set.adjectives)} ${getRandomItem(set.verbs)} ${getRandomItem(set.elements)} ${getRandomItem(set.objects)}`;
+                output.textContent = spell;
+            } else {
+                const set = data.ru;
+                const obj = getRandomItem(set.objects); // { word, gender }
+                const gender = obj.gender;
 
-    const adj = getRandomItem(set.adjectives[gender]);
-    const verb = getRandomItem(set.verbs[gender]);
-    const element = getRandomItem(set.elements[gender]);
+                const adj = getRandomItem(set.adjectives[gender]);
+                const verb = getRandomItem(set.verbs[gender]);
+                const element = getRandomItem(set.elements[gender]);
 
-    const spell = `${adj} ${verb} ${element} ${obj.word}`;
-    output.textContent = spell;
-  }
+                const spell = `${adj} ${verb} ${element} ${obj.word}`;
+                output.textContent = spell;
+            }
 
-  output.style.display = 'block';
-}
-  </script>
+            output.style.display = 'block';
+        }
+    </script>
 </body>
+
 </html>
